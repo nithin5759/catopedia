@@ -1,3 +1,46 @@
+# Catopedia web app
+
+A web app created with React + TypeScript + Vite
+
+Node version: 20.17.0
+NPM version: 11.1.0
+
+## Installation
+
+Install catopedia packages with npm
+
+```bash
+  cd catopedia
+ npm install
+```
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/nithin5759/catopedia.git
+```
+
+Go to the project directory
+
+```bash
+  cd catopedia
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
