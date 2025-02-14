@@ -1,0 +1,1 @@
+export { toggleFilter } from "./catSlice";
