@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
+import { CircularProgress } from "@mui/material";
 import { PAGE_SIZE_VALUES, WIDTH_VALUES } from "@constants";
 import i18n from "@locales";
 import { CatService } from "../../services/catServices";
@@ -39,7 +40,12 @@ const CatGrid = () => {
     setPage(event.page.skip / PAGE_SIZE + PAGE_SIZE_VALUES.INITIAL_PAGE);
   };
 
-  if (isLoading) return <p>{i18n.t("landing_screen.loading")}</p>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <CircularProgress />
+      </div>
+    );
   if (error) return <p>{i18n.t("landing_screen.error")}</p>;
 
   const totalPages = Math.ceil(PAGE_SIZE_VALUES.TOTAL_NUMBER / PAGE_SIZE);
@@ -83,7 +89,7 @@ const CatGrid = () => {
   };
 
   return (
-    <div className="p-4 w-fit">
+    <div className="p-4 w-fit flex flex-col items-center">
       <Grid
         data={data}
         pageable={false}
@@ -93,21 +99,16 @@ const CatGrid = () => {
         className="border rounded-lg shadow-lg w-fit p-6"
       >
         <Column
-          field="id"
-          title={i18n.t("landing_screen.name_title")}
-          className="p-4 text-center text-2xl m-4 "
-          width={columnWidth}
-        />
-        <Column
           field="url"
           title={i18n.t("landing_screen.cat_image_title")}
-          className="p-4 "
+          className="p-4"
+          headerClassName="text-2xl text-center w-full"
           cell={(props) => (
             <div className="flex justify-center ">
               <img
                 src={props.dataItem.url}
                 alt="Cat"
-                className="w-[14rem] h-[14rem] m-4 object-cover rounded-lg shadow-md"
+                className="w-[20rem] h-[20rem] m-4 object-cover rounded-lg shadow-md sm:w-[25rem] sm:h-[25rem]"
               />
             </div>
           )}
@@ -148,7 +149,7 @@ const CatGrid = () => {
           onClick={() => handlePageClick(Math.min(page + 1, totalPages))}
           className="px-4 py-2 bg-blue-500 text-white rounded-md"
         >
-         {i18n.t("landing_screen.next")}
+          {i18n.t("landing_screen.next")}
         </button>
       </div>
     </div>
