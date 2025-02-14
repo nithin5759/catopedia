@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "es2020", // Set the module to es2020 or higher
+    "jsx": "preserve",
+    "baseUrl": "src", // Set baseUrl to 'src'
+    "paths": {
+      "@components": ["components/"],
+      "@reducers": ["store/reducers/"],
+      "@store/*": ["store/*"],
+      "@constants": ["constants/"],
+      "@locales": ["locales/i18n.ts"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"]
+}
